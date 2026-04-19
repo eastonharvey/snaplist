@@ -1,0 +1,41 @@
+{
+  "name": "snaplist",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@clerk/nextjs": "^6",
+    "@google/generative-ai": "^0.24.1",
+    "@scalar/nextjs-api-reference": "^0.10.8",
+    "@supabase/supabase-js": "^2.103.2",
+    "drizzle-orm": "^0.41",
+    "next": "16.2.3",
+    "postgres": "^3",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "resend": "^6.12.0",
+    "zipcodes": "^8.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/zipcodes": "^8.0.5",
+    "@vitejs/plugin-react": "^6.0.1",
+    "drizzle-kit": "^0.30",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.3",
+    "tailwindcss": "^4",
+    "typescript": "^5",
+    "vite-tsconfig-paths": "^6.1.1",
+    "vitest": "^4.1.4"
+  }
+}

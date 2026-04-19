@@ -1,0 +1,37 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc *)",
+      "Bash(npm install *)",
+      "Bash(npx drizzle-kit *)",
+      "mcp__plugin_supabase_supabase__list_projects",
+      "mcp__plugin_supabase_supabase__list_tables",
+      "mcp__plugin_supabase_supabase__apply_migration",
+      "mcp__plugin_supabase_supabase__execute_sql",
+      "Bash(node *)",
+      "mcp__plugin_supabase_supabase__get_project",
+      "Bash(taskkill /PID 50364 /F)",
+      "Bash(npm run *)",
+      "Bash(cmd *)",
+      "Bash(powershell *)",
+      "Bash(npm test *)",
+      "Bash(npx vitest *)",
+      "Bash(npx tsx *)",
+      "Bash(cat /c/Projects/ClassifiedAdsPlus/snaplist/docs/superpowers/*.md)",
+      "Bash(ls -la /c/Projects/ClassifiedAdsPlus/snaplist/*.ts)",
+      "Bash(git checkout *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(grep -v \"^\\\\s*$\")",
+      "Bash(grep -E \"^C:\\\\\\\\\")",
+      "Bash(grep \"snaplist\\\\\\\\\")",
+      "WebSearch",
+      "mcp__plugin_playwright_playwright__browser_navigate",
+      "Bash(taskkill /PID 22024 /F)",
+      "Bash(xargs ls *)",
+      "Bash(curl -s http://localhost:3000/listings/new)",
+      "WebFetch(domain:ai.google.dev)",
+      "Bash(npm ls *)"
+    ]
+  }
+}

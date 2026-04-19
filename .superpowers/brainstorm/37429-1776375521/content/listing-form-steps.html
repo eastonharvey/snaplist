@@ -1,0 +1,124 @@
+<h2>Two-Step Listing Flow</h2>
+<p class="subtitle">Step 1 shows only photo upload. Step 2 reveals the form after analysis.</p>
+
+<div class="split">
+
+  <!-- Step 1 -->
+  <div class="mockup">
+    <div class="mockup-header">Post a Listing — Step 1</div>
+    <div class="mockup-body" style="font-family:system-ui;font-size:13px;color:#e2e8f0">
+
+      <div style="text-align:center;padding:8px 0 20px">
+        <div style="font-size:22px;margin-bottom:6px">📸</div>
+        <div style="font-weight:700;font-size:16px;margin-bottom:6px">Start with your photos</div>
+        <div style="color:#94a3b8;font-size:12px;line-height:1.5">Upload 2–3 photos and we'll identify your item and fill in the listing details automatically.</div>
+      </div>
+
+      <!-- Drop zone -->
+      <div style="border:2px dashed #334155;border-radius:12px;padding:28px 16px;text-align:center;margin-bottom:16px;background:#0f172a">
+        <div style="font-size:28px;margin-bottom:8px">🖼️</div>
+        <div style="color:#94a3b8;font-size:12px;margin-bottom:4px">Drag photos here or</div>
+        <div style="color:#6366f1;font-size:12px;font-weight:600;cursor:pointer">browse files</div>
+      </div>
+
+      <!-- After photos added -->
+      <div style="display:flex;gap:8px;margin-bottom:16px">
+        <div style="width:72px;height:72px;border-radius:8px;background:linear-gradient(135deg,#334155,#1e293b);display:flex;align-items:center;justify-content:center;color:#64748b;font-size:20px;position:relative">
+          📷
+          <span style="position:absolute;top:-4px;right:-4px;background:#ef4444;color:white;border-radius:999px;width:16px;height:16px;font-size:9px;display:flex;align-items:center;justify-content:center;cursor:pointer">×</span>
+        </div>
+        <div style="width:72px;height:72px;border-radius:8px;background:linear-gradient(135deg,#334155,#1e293b);display:flex;align-items:center;justify-content:center;color:#64748b;font-size:20px;position:relative">
+          📷
+          <span style="position:absolute;top:-4px;right:-4px;background:#ef4444;color:white;border-radius:999px;width:16px;height:16px;font-size:9px;display:flex;align-items:center;justify-content:center;cursor:pointer">×</span>
+        </div>
+        <div style="width:72px;height:72px;border-radius:8px;border:2px dashed #334155;display:flex;align-items:center;justify-content:center;color:#475569;font-size:18px">+</div>
+      </div>
+
+      <button style="width:100%;background:#6366f1;color:white;border:none;border-radius:8px;padding:10px;font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px">
+        <span>✦</span> Analyze Photos
+      </button>
+
+    </div>
+  </div>
+
+  <!-- Step 2 -->
+  <div class="mockup">
+    <div class="mockup-header">Post a Listing — Step 2 (after analysis)</div>
+    <div class="mockup-body" style="font-family:system-ui;font-size:13px;color:#e2e8f0">
+
+      <!-- Compact photo strip -->
+      <div style="display:flex;gap:6px;align-items:center;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid #1e293b">
+        <div style="width:48px;height:48px;border-radius:6px;background:linear-gradient(135deg,#334155,#1e293b);display:flex;align-items:center;justify-content:center;font-size:14px">📷</div>
+        <div style="width:48px;height:48px;border-radius:6px;background:linear-gradient(135deg,#334155,#1e293b);display:flex;align-items:center;justify-content:center;font-size:14px">📷</div>
+        <div style="color:#6366f1;font-size:11px;margin-left:4px;cursor:pointer">+ add more</div>
+        <div style="margin-left:auto;background:#0f172a;border:1px solid #334155;color:#94a3b8;border-radius:6px;padding:4px 8px;font-size:10px;cursor:pointer">Re-analyze</div>
+      </div>
+
+      <!-- AI success banner -->
+      <div style="background:#0f2b1a;border:1px solid #166534;border-radius:8px;padding:8px 12px;margin-bottom:14px;display:flex;align-items:center;gap:8px">
+        <span style="color:#4ade80;font-size:14px">✦</span>
+        <span style="color:#86efac;font-size:11px">Item identified — review and edit the details below</span>
+      </div>
+
+      <!-- Title -->
+      <div style="margin-bottom:12px">
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px">
+          <span style="font-weight:600;font-size:12px">Title</span>
+          <span style="background:#4f46e5;color:white;font-size:9px;padding:1px 6px;border-radius:999px">✦ AI</span>
+        </div>
+        <div style="background:#1e293b;border:1px solid #4f46e5;border-radius:8px;padding:7px 10px;color:#e2e8f0;font-size:12px">Apple MacBook Pro 13" (2021) — M1</div>
+      </div>
+
+      <!-- Description -->
+      <div style="margin-bottom:12px">
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px">
+          <span style="font-weight:600;font-size:12px">Description</span>
+          <span style="background:#4f46e5;color:white;font-size:9px;padding:1px 6px;border-radius:999px">✦ AI</span>
+        </div>
+        <div style="background:#1e293b;border:1px solid #4f46e5;border-radius:8px;padding:7px 10px;color:#e2e8f0;font-size:12px;line-height:1.5">Apple MacBook Pro 13-inch with M1 chip. Excellent performance for everyday tasks and development...</div>
+      </div>
+
+      <!-- Price + Condition -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px">
+        <div>
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px">
+            <span style="font-weight:600;font-size:12px">Price</span>
+            <span style="background:#4f46e5;color:white;font-size:9px;padding:1px 6px;border-radius:999px">✦ AI</span>
+          </div>
+          <div style="background:#1e293b;border:1px solid #4f46e5;border-radius:8px;padding:7px 10px;color:#e2e8f0;font-size:12px">$749</div>
+        </div>
+        <div>
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px">
+            <span style="font-weight:600;font-size:12px">Condition</span>
+            <span style="background:#4f46e5;color:white;font-size:9px;padding:1px 6px;border-radius:999px">✦ AI</span>
+          </div>
+          <div style="background:#1e293b;border:1px solid #4f46e5;border-radius:8px;padding:7px 10px;color:#e2e8f0;font-size:12px;display:flex;justify-content:space-between">Like New <span style="color:#64748b">▾</span></div>
+        </div>
+      </div>
+
+      <!-- Category + ZIP -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px">
+        <div>
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px">
+            <span style="font-weight:600;font-size:12px">Category</span>
+            <span style="background:#4f46e5;color:white;font-size:9px;padding:1px 6px;border-radius:999px">✦ AI</span>
+          </div>
+          <div style="background:#1e293b;border:1px solid #4f46e5;border-radius:8px;padding:7px 10px;color:#e2e8f0;font-size:12px;display:flex;justify-content:space-between">Electronics <span style="color:#64748b">▾</span></div>
+        </div>
+        <div>
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px">
+            <span style="font-weight:600;font-size:12px">ZIP Code</span>
+            <span style="background:#0f766e;color:white;font-size:9px;padding:1px 6px;border-radius:999px">📍 auto</span>
+          </div>
+          <div style="background:#1e293b;border:1px solid #334155;border-radius:8px;padding:7px 10px;color:#e2e8f0;font-size:12px">78701</div>
+        </div>
+      </div>
+
+      <button style="width:100%;background:#6366f1;color:white;border:none;border-radius:8px;padding:10px;font-size:13px;font-weight:600;cursor:pointer">
+        Post Listing
+      </button>
+
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,275 @@
+openapi: 3.1.0
+info:
+  title: Snaplist API
+  version: 1.0.0
+  description: Public read-only API for browsing Snaplist classified listings.
+
+servers:
+  - url: /api
+
+security:
+  - ApiKey: []
+
+components:
+  securitySchemes:
+    ApiKey:
+      type: http
+      scheme: bearer
+      description: Pass your API key as a Bearer token in the Authorization header.
+
+  schemas:
+    ListingSummary:
+      type: object
+      properties:
+        id:          { type: integer }
+        title:       { type: string }
+        description: { type: string }
+        price:       { type: integer, description: "Price in cents (e.g. 1000 = $10.00)" }
+        zip:         { type: string, nullable: true }
+        city:        { type: string, nullable: true }
+        state:       { type: string, nullable: true }
+        status:      { type: string, enum: [active, sold, archived] }
+        createdAt:   { type: string, format: date-time }
+        categoryName: { type: string, nullable: true }
+
+    ListingDetail:
+      allOf:
+        - $ref: '#/components/schemas/ListingSummary'
+        - type: object
+          properties:
+            lat:       { type: number, nullable: true }
+            lng:       { type: number, nullable: true }
+            updatedAt: { type: string, format: date-time }
+            images:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:    { type: integer }
+                  url:   { type: string, format: uri }
+                  order: { type: integer }
+
+    Category:
+      type: object
+      properties:
+        id:   { type: integer }
+        name: { type: string }
+        slug: { type: string }
+
+    ListMeta:
+      type: object
+      properties:
+        total:      { type: integer }
+        page:       { type: integer }
+        pageSize:   { type: integer }
+        totalPages: { type: integer }
+
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            message: { type: string }
+            code:    { type: string }
+
+paths:
+  /listings:
+    get:
+      summary: List listings
+      description: Returns a paginated list of listings. Defaults to active status.
+      parameters:
+        - in: query
+          name: q
+          schema: { type: string }
+          description: Keyword search across title and description.
+        - in: query
+          name: category
+          schema: { type: string }
+          description: Filter by category slug (e.g. "electronics").
+        - in: query
+          name: zip
+          schema: { type: string, pattern: '^\d{5}$' }
+          description: US zip code center for radius search.
+        - in: query
+          name: radius
+          schema: { type: number, default: 25 }
+          description: Radius in miles (1–500). Requires zip.
+        - in: query
+          name: status
+          schema: { type: string, enum: [active, sold, archived], default: active }
+          description: Filter by listing status.
+        - in: query
+          name: page
+          schema: { type: integer, default: 1, minimum: 1 }
+        - in: query
+          name: pageSize
+          schema: { type: integer, default: 20, minimum: 1, maximum: 100 }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items: { $ref: '#/components/schemas/ListingSummary' }
+                  meta: { $ref: '#/components/schemas/ListMeta' }
+        '401':
+          description: Missing or invalid API key
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '429':
+          description: Rate limit exceeded (60 requests/minute)
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+    post:
+      summary: Create a listing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [title, description, price]
+              properties:
+                title:       { type: string }
+                description: { type: string }
+                price:       { type: number, description: "Price in dollars (e.g. 49.99)" }
+                zip:         { type: string, pattern: '^\d{5}$', description: "US zip code" }
+                categoryId:  { type: integer }
+      responses:
+        '201':
+          description: Listing created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data: { $ref: '#/components/schemas/ListingSummary' }
+                  meta: { type: object }
+        '401':
+          description: Missing or invalid API key
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+
+  /listings/{id}:
+    get:
+      summary: Get listing by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data: { $ref: '#/components/schemas/ListingDetail' }
+                  meta: { type: object }
+        '401':
+          description: Missing or invalid API key
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '404':
+          description: Listing not found
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+
+  /listings/{id}/images:
+    post:
+      summary: Upload an image to a listing
+      description: Requires ownership of the listing. Accepts multipart/form-data with an `image` field.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer }
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [image]
+              properties:
+                image:
+                  type: string
+                  format: binary
+      responses:
+        '201':
+          description: Image uploaded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:    { type: integer }
+                      url:   { type: string, format: uri }
+                      order: { type: integer }
+                  meta: { type: object }
+        '401':
+          description: Missing or invalid API key
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '403':
+          description: Not the listing owner
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '404':
+          description: Listing not found
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+
+  /categories:
+    get:
+      summary: List all categories
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items: { $ref: '#/components/schemas/Category' }
+                  meta: { type: object }
+        '401':
+          description: Missing or invalid API key
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }

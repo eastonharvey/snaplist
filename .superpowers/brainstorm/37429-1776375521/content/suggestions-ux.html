@@ -1,0 +1,82 @@
+<h2>How should AI suggestions appear?</h2>
+<p class="subtitle">After clicking "Analyze Photos", how does the user see and apply the results?</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0f172a;padding:16px;font-family:monospace;font-size:12px">
+      <div style="background:#1e293b;border-radius:8px;padding:12px;margin-bottom:8px">
+        <div style="color:#94a3b8;font-size:10px;margin-bottom:4px">TITLE</div>
+        <div style="background:#334155;border-radius:4px;height:28px;display:flex;align-items:center;padding:0 8px;color:#e2e8f0;font-size:11px">Apple MacBook Pro 13" (2021)
+          <span style="margin-left:auto;background:#6366f1;color:white;font-size:9px;padding:2px 6px;border-radius:999px">AI</span>
+        </div>
+      </div>
+      <div style="background:#1e293b;border-radius:8px;padding:12px;margin-bottom:8px">
+        <div style="color:#94a3b8;font-size:10px;margin-bottom:4px">DESCRIPTION</div>
+        <div style="background:#334155;border-radius:4px;padding:8px;color:#e2e8f0;font-size:10px;line-height:1.4">M1 chip, excellent condition. Minor wear on corners. Includes original charger...
+          <span style="display:inline-block;background:#6366f1;color:white;font-size:9px;padding:1px 5px;border-radius:999px;margin-left:4px">AI</span>
+        </div>
+      </div>
+      <div style="background:#1e293b;border-radius:8px;padding:12px">
+        <div style="color:#94a3b8;font-size:10px;margin-bottom:4px">PRICE</div>
+        <div style="background:#334155;border-radius:4px;height:28px;display:flex;align-items:center;padding:0 8px;color:#e2e8f0;font-size:11px">$749
+          <span style="margin-left:auto;background:#6366f1;color:white;font-size:9px;padding:2px 6px;border-radius:999px">AI</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Inline Fill</h3>
+      <p>Fields populate directly with AI values. User edits in place. An "AI" badge on each field shows what was auto-filled. Fastest to interact with.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0f172a;padding:16px;font-family:monospace;font-size:12px">
+      <div style="background:#1e293b;border-radius:8px;padding:12px;margin-bottom:8px;border:1px solid #6366f1">
+        <div style="color:#818cf8;font-size:10px;font-weight:bold;margin-bottom:8px">✦ AI SUGGESTIONS</div>
+        <div style="color:#e2e8f0;font-size:10px;margin-bottom:6px"><span style="color:#94a3b8">Title:</span> Apple MacBook Pro 13"</div>
+        <div style="color:#e2e8f0;font-size:10px;margin-bottom:6px"><span style="color:#94a3b8">Price:</span> $700–800</div>
+        <div style="color:#e2e8f0;font-size:10px;margin-bottom:8px"><span style="color:#94a3b8">Category:</span> Electronics</div>
+        <div style="display:flex;gap:6px">
+          <div style="flex:1;background:#6366f1;color:white;text-align:center;padding:4px;border-radius:4px;font-size:10px">Apply All</div>
+          <div style="flex:1;background:#334155;color:#e2e8f0;text-align:center;padding:4px;border-radius:4px;font-size:10px">Edit First</div>
+        </div>
+      </div>
+      <div style="background:#1e293b;border-radius:8px;padding:12px">
+        <div style="color:#94a3b8;font-size:10px;margin-bottom:4px">TITLE</div>
+        <div style="background:#334155;border-radius:4px;height:28px;color:#64748b;font-size:10px;display:flex;align-items:center;padding:0 8px">Empty — click Apply All above</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Suggestion Panel</h3>
+      <p>A panel appears above the form with all AI suggestions. User reviews, then clicks "Apply All" or "Edit First". More deliberate — user sees everything before committing.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0f172a;padding:16px;font-family:monospace;font-size:12px;position:relative">
+      <div style="background:#1e293b;border-radius:8px;padding:12px;opacity:0.4;margin-bottom:4px">
+        <div style="color:#94a3b8;font-size:10px;margin-bottom:4px">TITLE</div>
+        <div style="background:#334155;border-radius:4px;height:28px"></div>
+      </div>
+      <div style="position:absolute;top:24px;left:24px;right:24px;background:#1e293b;border:1px solid #6366f1;border-radius:10px;padding:14px;box-shadow:0 8px 32px rgba(0,0,0,0.5)">
+        <div style="color:#818cf8;font-size:10px;font-weight:bold;margin-bottom:8px">✦ AI identified your item</div>
+        <div style="color:#e2e8f0;font-size:11px;margin-bottom:4px;font-weight:600">Apple MacBook Pro 13" (2021)</div>
+        <div style="color:#94a3b8;font-size:10px;margin-bottom:8px;line-height:1.4">M1 chip, excellent condition. Minor wear on corners...</div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+          <span style="color:#94a3b8;font-size:10px">Suggested price</span>
+          <span style="color:#e2e8f0;font-size:10px;font-weight:600">$700–800</span>
+        </div>
+        <div style="display:flex;gap:6px">
+          <div style="flex:1;background:#6366f1;color:white;text-align:center;padding:5px;border-radius:6px;font-size:10px">Use These</div>
+          <div style="background:#334155;color:#e2e8f0;text-align:center;padding:5px;border-radius:6px;font-size:10px;width:50px">Skip</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Modal Review</h3>
+      <p>Results appear in a modal overlay. User reviews the full AI output and clicks "Use These" to apply or "Skip". Clearest intent — but adds a step.</p>
+    </div>
+  </div>
+
+</div>
